@@ -11,12 +11,10 @@ from textblob import TextBlob
 import csv
 import cPickle as pickle
 
-
-train = []
-test = []
-full = []
 classifiers = []
 for prefix in ["ind","chi","fre","gre","mex","ita","tha"]:
+	train = []
+	test = []
 	with open(prefix+'TrainData.csv', "rb") as csvfile:
 		reader = csv.reader(csvfile)
 		for row in reader:
@@ -42,6 +40,7 @@ for prefix in ["ind","chi","fre","gre","mex","ita","tha"]:
 
 print "Trained all classifiers, loading untagged data."
 
+full = []
 with open('notTaggedData.csv', "rb") as csvfile:
 	reader = csv.reader(csvfile)
 	for row in reader:
